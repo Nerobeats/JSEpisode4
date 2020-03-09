@@ -52,11 +52,11 @@ function bookCountsByAuthor(authors) {
 function booksByColor(books) {
   const colors = {};
   books.forEach(book => {
-    if (colors[book.color])  colors[book.color].push(book.title);
-    else colors[book.color] = [book.title]  ;
-    
+    if (colors[book.color]) colors[book.color].push(book.title);
+    else colors[book.color] = [book.title];
+
     return colors;
-  }
+  });
   return colors;
 }
 
@@ -69,7 +69,9 @@ function booksByColor(books) {
  *    ["The Hitchhikers Guide", "The Meaning of Liff"]
  ****************************************************************/
 function titlesByAuthorName(authorName, authors, books) {
-  // Your code goes here
+  const author = getAuthorByName(authorName , authors):
+  if (!author) return[];
+  return author.books.mape(bookID => getBookById(bookID, books).title)
 }
 
 /**************************************************************
