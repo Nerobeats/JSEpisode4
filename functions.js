@@ -6,7 +6,11 @@
  * - returns undefined if no matching book is found
  ****************************************************************/
 function getBookById(bookId, books) {
-  // Your code goes here
+  let book = books.filter(book => book.id === bookId);
+  if (book[0]) {
+    return book[0];
+  }
+  return undefined;
 }
 
 /**************************************************************
@@ -17,7 +21,10 @@ function getBookById(bookId, books) {
  * - returns undefined if no matching author is found
  ****************************************************************/
 function getAuthorByName(authorName, authors) {
-  // Your code goes here
+  let author = authors.find(
+    value => value.name.toLowerCase() === authorName.toLowerCase()
+  );
+  return author;
 }
 
 /**************************************************************
@@ -27,7 +34,12 @@ function getAuthorByName(authorName, authors) {
  *    [{ author: <NAME>, bookCount: <NUMBER_OF_BOOKS> }]
  ****************************************************************/
 function bookCountsByAuthor(authors) {
-  // Your code goes here
+  let printList = [];
+  authors.forEach(author => {
+    let content = { author: author.name, bookCount: author.books.length };
+    printList.push(content);
+  });
+  return printList;
 }
 
 /**************************************************************
@@ -39,9 +51,12 @@ function bookCountsByAuthor(authors) {
  ****************************************************************/
 function booksByColor(books) {
   const colors = {};
-
-  // Your code goes here
-
+  books.forEach(book => {
+    if (colors[book.color])  colors[book.color].push(book.title);
+    else colors[book.color] = [book.title]  ;
+    
+    return colors;
+  }
   return colors;
 }
 
