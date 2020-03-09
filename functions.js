@@ -69,9 +69,9 @@ function booksByColor(books) {
  *    ["The Hitchhikers Guide", "The Meaning of Liff"]
  ****************************************************************/
 function titlesByAuthorName(authorName, authors, books) {
-  const author = getAuthorByName(authorName , authors):
-  if (!author) return[];
-  return author.books.mape(bookID => getBookById(bookID, books).title)
+  const author = getAuthorByName(authorName, authors);
+  if (!author) return [];
+  return author.books.mape(bookID => getBookById(bookID, books).title);
 }
 
 /**************************************************************
