@@ -71,7 +71,7 @@ function booksByColor(books) {
 function titlesByAuthorName(authorName, authors, books) {
   const author = getAuthorByName(authorName, authors);
   if (!author) return [];
-  return author.books.mape(bookID => getBookById(bookID, books).title);
+  return author.books.map(bookID => getBookById(bookID, books).title);
 }
 
 /**************************************************************
@@ -82,7 +82,13 @@ function titlesByAuthorName(authorName, authors, books) {
  * Note: assume there will never be a tie
  ****************************************************************/
 function mostProlificAuthor(authors) {
-  // Your code goes here
+  let author = authors[0];
+  authors.forEach(value => {
+    if (value.books.length > author.books.length) {
+      author = value;
+    }
+  });
+  return author.name;
 }
 
 /**************************************************************
@@ -109,7 +115,8 @@ function mostProlificAuthor(authors) {
  * BONUS: REMOVE DUPLICATE BOOKS
  ****************************************************************/
 function relatedBooks(bookId, authors, books) {
-  // Your code goes here
+  let author = getBookById(bookId, books).authors.name;
+  return titlesByAuthorName(author, authors, books);
 }
 
 /**************************************************************
